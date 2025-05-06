@@ -40,10 +40,11 @@ chrome.storage.sync.get({
   colortt: "#FFFFFF",
 }, function (items) {
   // Dedect smartschool++ and disable styles
-  // Update 06/05/25 => look for a settings page instead of Dmenu as it should appear everywhere, whereas dmenu wont.
+  // Update 06/05/25 => look for a settings page instead of dmenu as it should appear everywhere, whereas dmenu wont.
   const smpp = document.getElementById("quickSettingsButton");
   // console.log(smpp);
   if (smpp != null) {
+    chrome.runtime.sendMessage({ smppDetected: smppActive }); // so we can inform people that themes have been disabled in the extention popup
     return;
   }
 
@@ -57,7 +58,7 @@ chrome.storage.sync.get({
 let callback = function (mutationsList, observer) {
   for (let mutation of mutationsList) {
     for (let node of mutation.addedNodes) {
-      if (node.id != "dmenu") {
+      if (node.id != "quickSettingsButton") {
         continue;
       }
       // smartschool++ was loaded after we created our style.
