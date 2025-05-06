@@ -40,9 +40,10 @@ chrome.storage.sync.get({
   colortt: "#FFFFFF",
 }, function (items) {
   // Dedect smartschool++ and disable styles
-  const dmenu = document.getElementById("dmenu");
-  console.log(dmenu);
-  if (dmenu != null) {
+  // Update 06/05/25 => look for a settings page instead of Dmenu as it should appear everywhere, whereas dmenu wont.
+  const smpp = document.getElementById("quickSettingsButton");
+  // console.log(smpp);
+  if (smpp != null) {
     return;
   }
 
