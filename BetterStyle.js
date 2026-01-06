@@ -42,7 +42,6 @@ chrome.storage.sync.get({
   // Dedect smartschool++ and disable styles
   // Update 06/05/25 => look for a settings page instead of dmenu as it should appear everywhere, whereas dmenu wont.
   const smpp = document.getElementById("quickSettingsButton");
-  // console.log(smpp);
   if (smpp != null) {
     chrome.runtime.sendMessage({ smppDetected: smppActive }); // so we can inform people that themes have been disabled in the extention popup
     return;
